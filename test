@@ -1,1 +1,23 @@
+import unittest
 
+from Capulet import CapuletEngine
+from Sternman import SternmanEngine
+from Willoughby import WilloughbyEngine
+
+class TestCapuletEngine(unittest.TestCase):
+    def test_needs_service_cap(self):
+        current_mileage = 40000
+        last_service_mileage = 0
+        engine = CapuletEngine(current_mileage, last_service_mileage)
+        self.assertTrue(engine.needs_service())
+
+    def test_needs_service_willough(self):
+        current_mileage = 60002
+        last_service_mileage = 0
+        engine = WilloughbyEngine(current_mileage, last_service_mileage)
+        self.assertTrue(engine.needs_service())
+
+    def test_needs_service_stern(self):
+        warning_light_is_on = True
+        engine = SternmanEngine(warning_light_is_on)
+        self.assertTrue(engine.needs_service())
